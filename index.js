@@ -5,7 +5,7 @@ const TOKEN_PATH = 'token.json';
 
 fs.readFile('credentials.json', (err, content) => {
   if (err) return console.error(`Error loading client secret file: ${err}`);
-  authorize(JSON.parse(content), listTaskLists);
+  authorize(JSON.parse(content), listMyTasks);
 });
 
 const authorize = (credentials, callback) => {
@@ -23,7 +23,7 @@ const authorize = (credentials, callback) => {
   });
 };
 
-const listTaskLists = (auth) => {
+const listMyTasks = (auth) => {
   const TASKLIST_ID = 'MTEyODExNzYzMDMyNzY0NTczNTg6MDow';
   const service = google.tasks({ version: 'v1', auth });
 
