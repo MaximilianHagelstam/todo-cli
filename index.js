@@ -24,22 +24,42 @@ const authorize = (credentials, callback) => {
 };
 
 const listTaskLists = (auth) => {
+  const TASKLIST_ID = 'MTEyODExNzYzMDMyNzY0NTczNTg6MDow';
   const service = google.tasks({ version: 'v1', auth });
-  service.tasklists.list(
+
+  service.tasks.list(
     {
-      maxResults: 10
+      tasklist: TASKLIST_ID
     },
     (err, res) => {
       if (err) return console.error(`The API returned an error: ${err}`);
-      const taskLists = res.data.items;
-      if (taskLists) {
-        console.log('Task lists:');
-        taskLists.forEach((taskList) => {
-          console.log(`${taskList.title} (${taskList.id})`);
+      const tasks = res.data.items;
+      if (tasks) {
+        console.log(`Tasks from ${TASKLIST_ID}:`);
+        tasks.forEach((task) => {
+          console.log(`${task.title} (${task.id})`);
         });
       } else {
-        console.log('No task lists found.');
+        console.log('No tasks found.');
       }
     }
   );
+
+  // service.tasklists.list(
+  //   {
+  //     maxResults: 10
+  //   },
+  //   (err, res) => {
+  //     if (err) return console.error(`The API returned an error: ${err}`);
+  //     const taskLists = res.data.items;
+  //     if (taskLists) {
+  //       console.log('Task lists:');
+  //       taskLists.forEach((taskList) => {
+  //         console.log(`${taskList.title} (${taskList.id})`);
+  //       });
+  //     } else {
+  //       console.log('No task lists found.');
+  //     }
+  //   }
+  // );
 };
