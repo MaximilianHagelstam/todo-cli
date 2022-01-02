@@ -1,13 +1,31 @@
 {
-  "name": "todocli",
-  "description": "CLI tool for managing Google Tasks",
+  "name": "todo-cli",
+  "description": "Manage Google Tasks in the terminal",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
+  "bin": {
+    "todo": "index.js"
+  },
+  "author": {
+    "name": "Maximilian Hagelstam",
+    "email": "maximilian.hagelstam@gmail.com",
+    "url": "https://maximilianhagelstam.me"
+  },
+  "keywords": [
+    "Google Tasks",
+    "Maximilian Hagelstam"
+  ],
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "googleapis": "^92.0.0"
+    "chalk": "^5.0.0",
+    "cli-alerts": "^1.2.2",
+    "cli-handle-error": "^4.4.0",
+    "cli-handle-unhandled": "^1.1.1",
+    "cli-meow-help": "^2.0.2",
+    "cli-welcome": "^2.2.2",
+    "googleapis": "^92.0.0",
+    "meow": "^9.0.0"
   }
 }

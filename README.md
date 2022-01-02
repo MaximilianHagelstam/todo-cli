@@ -1,3 +1,3 @@
 # Todo CLI
 
-CLI tool for managing Google Tasks
+Manage Google Tasks in the terminal
