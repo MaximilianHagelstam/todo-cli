@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
+const path = require('path');
 const { google } = require('googleapis');
 const init = require('./utils/init');
 const cli = require('./utils/cli');
 const log = require('./utils/log');
 
-const TOKEN_PATH = './token.json';
-const CREDENTIALS_PATH = './credentials.json';
+const TOKEN_PATH = path.resolve(__dirname, './token.json');
+const CREDENTIALS_PATH = path.resolve(__dirname, './credentials.json');
 const MY_TASKS_ID = 'MTEyODExNzYzMDMyNzY0NTczNTg6MDow';
 
 const { input } = cli;

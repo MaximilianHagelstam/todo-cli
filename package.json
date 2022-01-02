@@ -3,6 +3,7 @@
   "description": "Manage Google Tasks in the terminal",
   "version": "1.0.0",
   "license": "MIT",
+  "private": true,
   "bin": {
     "todo": "index.js"
   },
