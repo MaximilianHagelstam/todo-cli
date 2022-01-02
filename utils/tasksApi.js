@@ -3,9 +3,10 @@ const path = require('path');
 const { google } = require('googleapis');
 
 const TOKEN_PATH = path.resolve(__dirname, '../token.json');
+const CREDENTIALS_PATH = path.resolve(__dirname, '../credentials.json');
 const MY_TASKS_ID = 'MTEyODExNzYzMDMyNzY0NTczNTg6MDow';
 
-fs.readFile(path.resolve(__dirname, '../credentials.json'), (err, content) => {
+fs.readFile(CREDENTIALS_PATH, (err, content) => {
   if (err) return console.error(`Error loading client secret file: ${err}`);
   authorize(JSON.parse(content), addTask);
 });
