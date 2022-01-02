@@ -4,35 +4,18 @@ const init = require('./utils/init');
 const cli = require('./utils/cli');
 const log = require('./utils/log');
 const fs = require('fs');
-const path = require('path');
 const { google } = require('googleapis');
-
-const input = cli.input;
-const flags = cli.flags;
-const { clear, debug } = flags;
 
 const TOKEN_PATH = './token.json';
 const CREDENTIALS_PATH = './credentials.json';
 const MY_TASKS_ID = 'MTEyODExNzYzMDMyNzY0NTczNTg6MDow';
 
-const authorize = (credentials, callback) => {
-  const { client_secret, client_id, redirect_uris } = credentials.installed;
-  const oAuth2Client = new google.auth.OAuth2(
-    client_id,
-    client_secret,
-    redirect_uris[0]
-  );
-
-  fs.readFile(TOKEN_PATH, (err, token) => {
-    if (err) return console.error(`Error authorizing token: ${err}`);
-    oAuth2Client.setCredentials(JSON.parse(token));
-    callback(oAuth2Client, MY_TASKS_ID, flags.title);
-  });
-};
+const input = cli.input;
+const flags = cli.flags;
+const { clear, debug } = flags;
 
 const listTasks = (auth, taskListId) => {
   const service = google.tasks({ version: 'v1', auth });
-
   service.tasks.list(
     {
       tasklist: taskListId
@@ -65,6 +48,21 @@ const addTask = (auth, taskListId, taskTitle) => {
       console.log(`Added task: ${taskTitle}`);
     }
   );
+};
+
+const authorize = (credentials, callback) => {
+  const { client_secret, client_id, redirect_uris } = credentials.installed;
+  const oAuth2Client = new google.auth.OAuth2(
+    client_id,
+    client_secret,
+    redirect_uris[0]
+  );
+
+  fs.readFile(TOKEN_PATH, (err, token) => {
+    if (err) return console.error(`Error authorizing token: ${err}`);
+    oAuth2Client.setCredentials(JSON.parse(token));
+    callback(oAuth2Client, MY_TASKS_ID, flags.title);
+  });
 };
 
 (async () => {
