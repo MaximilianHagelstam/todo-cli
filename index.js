@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 
+const fs = require('fs');
+const { google } = require('googleapis');
 const init = require('./utils/init');
 const cli = require('./utils/cli');
 const log = require('./utils/log');
-const fs = require('fs');
-const { google } = require('googleapis');
 
 const TOKEN_PATH = './token.json';
 const CREDENTIALS_PATH = './credentials.json';
 const MY_TASKS_ID = 'MTEyODExNzYzMDMyNzY0NTczNTg6MDow';
 
-const input = cli.input;
-const flags = cli.flags;
+const { input } = cli;
+const { flags } = cli;
 const { clear, debug } = flags;
 
 const listTasks = (auth, taskListId) => {
@@ -51,10 +51,12 @@ const addTask = (auth, taskListId, taskTitle) => {
 };
 
 const authorize = (credentials, callback) => {
+  // eslint-disable-next-line camelcase
   const { client_secret, client_id, redirect_uris } = credentials.installed;
   const oAuth2Client = new google.auth.OAuth2(
     client_id,
     client_secret,
+    // eslint-disable-next-line camelcase
     redirect_uris[0]
   );
 
@@ -67,9 +69,14 @@ const authorize = (credentials, callback) => {
 
 (async () => {
   init({ clear });
-  input.includes(`help`) && cli.showHelp(0);
 
-  debug && log(flags);
+  if (input.includes('help')) {
+    cli.showHelp(0);
+  }
+
+  if (debug) {
+    log(flags);
+  }
 
   if (input.includes('list')) {
     fs.readFile(CREDENTIALS_PATH, (err, content) => {

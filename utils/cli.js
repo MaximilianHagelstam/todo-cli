@@ -3,36 +3,36 @@ const meowHelp = require('cli-meow-help');
 
 const flags = {
   clear: {
-    type: `boolean`,
+    type: 'boolean',
     default: false,
-    alias: `c`,
-    desc: `Clear the console`
+    alias: 'c',
+    desc: 'Clear the console'
   },
   debug: {
-    type: `boolean`,
+    type: 'boolean',
     default: false,
-    alias: `d`,
-    desc: `Print debug info`
+    alias: 'd',
+    desc: 'Print debug info'
   },
   version: {
-    type: `boolean`,
-    alias: `v`,
-    desc: `Print CLI version`
+    type: 'boolean',
+    alias: 'v',
+    desc: 'Print CLI version'
   },
   title: {
-    type: `string`,
-    alias: `t`,
-    default: `Empty todo`,
-    desc: `Todo title`
+    type: 'string',
+    alias: 't',
+    default: 'Empty todo',
+    desc: 'Todo title'
   }
 };
 
 const commands = {
-  help: { desc: `Print help info` }
+  help: { desc: 'Print help info' }
 };
 
 const helpText = meowHelp({
-  name: `todo-cli`,
+  name: 'todo-cli',
   flags,
   commands
 });

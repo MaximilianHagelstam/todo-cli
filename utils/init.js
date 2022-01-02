@@ -1,12 +1,12 @@
 const welcome = require('cli-welcome');
-const pkg = require('./../package.json');
 const unhandled = require('cli-handle-unhandled');
+const pkg = require('../package.json');
 
 module.exports = ({ clear = true }) => {
   unhandled();
   welcome({
-    title: `todo-cli`,
-    tagLine: `by Maximilian Hagelstam`,
+    title: 'todo-cli',
+    tagLine: 'by Maximilian Hagelstam',
     description: pkg.description,
     version: pkg.version,
     bgColor: '#36BB09',
