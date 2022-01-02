@@ -18,6 +18,12 @@ const flags = {
     type: `boolean`,
     alias: `v`,
     desc: `Print CLI version`
+  },
+  title: {
+    type: `string`,
+    alias: `t`,
+    default: `Empty todo`,
+    desc: `Todo title`
   }
 };
 

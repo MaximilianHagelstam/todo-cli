@@ -26,11 +26,11 @@ const authorize = (credentials, callback) => {
   fs.readFile(TOKEN_PATH, (err, token) => {
     if (err) return console.error(`Error authorizing token: ${err}`);
     oAuth2Client.setCredentials(JSON.parse(token));
-    callback(oAuth2Client, MY_TASKS_ID);
+    callback(oAuth2Client, MY_TASKS_ID, flags.title);
   });
 };
 
-const listMyTasks = (auth, taskListId) => {
+const listTasks = (auth, taskListId) => {
   const service = google.tasks({ version: 'v1', auth });
 
   service.tasks.list(
@@ -76,7 +76,14 @@ const addTask = (auth, taskListId, taskTitle) => {
   if (input.includes('list')) {
     fs.readFile(CREDENTIALS_PATH, (err, content) => {
       if (err) return console.error(`Error loading client secret file: ${err}`);
-      authorize(JSON.parse(content), listMyTasks);
+      authorize(JSON.parse(content), listTasks);
+    });
+  }
+
+  if (input.includes('add')) {
+    fs.readFile(CREDENTIALS_PATH, (err, content) => {
+      if (err) return console.error(`Error loading client secret file: ${err}`);
+      authorize(JSON.parse(content), addTask);
     });
   }
 })();
