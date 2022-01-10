@@ -21,3 +21,7 @@ A simple command-line tool for managing Google Tasks. ✨
 | `todo list`                 | List tasks in "My Tasks" list   |
 | `todo add -t "<YOUR TODO>"` | Add new task to "My Tasks" list |
 | `todo -v`                   | Check current CLI version       |
+
+## ✒️ License
+
+This project is licensed under the terms of the [MIT](https://choosealicense.com/licenses/mit/) license.
