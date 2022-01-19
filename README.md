@@ -12,7 +12,7 @@ A simple command-line tool for managing Google Tasks. ✨
 - Move into project directory: `cd todo-cli`
 - Install dependencies: `npm i`
 - Create credentials with [this guide](https://developers.google.com/workspace/guides/create-credentials)
-- Install globally by running `npm i -g .` from withing the project directory
+- Install globally by running `npm i -g .` from within the project directory
 
 ## 🧰 Commands
 
