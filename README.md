@@ -1,12 +1,8 @@
-# Todo CLI 📝
-
-A simple command-line tool for managing Google Tasks. ✨
-
-### Increase your productivity with a simple command. 🛋
+# Todo CLI
 
 ![demo](demo.gif)
 
-## 👾 Get Started
+## Get Started
 
 - Clone repo: `git clone https://github.com/MaximilianHagelstam/todo-cli.git`
 - Move into project directory: `cd todo-cli`
@@ -14,7 +10,7 @@ A simple command-line tool for managing Google Tasks. ✨
 - Create credentials with [this guide](https://developers.google.com/workspace/guides/create-credentials)
 - Install globally by running `npm i -g .` from within the project directory
 
-## 🧰 Commands
+## Commands
 
 | Command                     | Description                     |
 | --------------------------- | ------------------------------- |
@@ -22,6 +18,6 @@ A simple command-line tool for managing Google Tasks. ✨
 | `todo add -t "<YOUR TODO>"` | Add new task to "My Tasks" list |
 | `todo -v`                   | Check current CLI version       |
 
-## ✒️ License
+## License
 
 This project is licensed under the terms of the [MIT](https://choosealicense.com/licenses/mit/) license.
